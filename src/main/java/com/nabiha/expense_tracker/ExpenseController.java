@@ -26,4 +26,9 @@ public class ExpenseController {
     public List<Expense> getAllExpenses() {
         return repository.findAll();
     }
+    @GetMapping("/{id}")
+    public Expense getExpenseById(@PathVariable Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new ExpenseNotFoundException(id));
+    }
 }
