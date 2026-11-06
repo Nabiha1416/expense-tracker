@@ -42,4 +42,16 @@ public class ExpenseController {
         repository.deleteById(id);
 
     }
+
+    @PutMapping("/{id}")
+    public Expense updateExpense(@PathVariable Long id,@Valid @RequestBody Expense updated){
+        Expense existing=repository.findById(id)
+                .orElseThrow(()-> new ExpenseNotFoundException(id));
+        existing.setTitle(updated.getTitle());
+        existing.setAmount(updated.getAmount());
+        existing.setCategory(updated.getCategory());
+        existing.setExpenseDate(updated.getExpenseDate());
+
+        return repository.save(existing);
+    }
 }
