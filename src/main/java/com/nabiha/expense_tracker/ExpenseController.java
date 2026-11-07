@@ -23,7 +23,10 @@ public class ExpenseController {
     }
 
     @GetMapping
-    public List<Expense> getAllExpenses() {
+    public List<Expense> getAllExpenses(@RequestParam(required = false) String category) {
+        if (category != null) {
+            return repository.findByCategoryIgnoreCase(category);
+        }
         return repository.findAll();
     }
 
