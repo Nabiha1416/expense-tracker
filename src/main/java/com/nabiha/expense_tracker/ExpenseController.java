@@ -1,6 +1,8 @@
 package com.nabiha.expense_tracker;
 
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,11 +25,11 @@ public class ExpenseController {
     }
 
     @GetMapping
-    public List<Expense> getAllExpenses(@RequestParam(required = false) String category) {
+    public Page<Expense> getAllExpenses(@RequestParam(required = false) String category, Pageable pageable) {
         if (category != null) {
-            return repository.findByCategoryIgnoreCase(category);
+            return repository.findByCategoryIgnoreCase(category, pageable);
         }
-        return repository.findAll();
+        return repository.findAll(pageable);
     }
 
     @GetMapping("/{id}")
