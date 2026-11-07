@@ -7,6 +7,8 @@ A REST API for tracking personal expenses, built with Java, Spring Boot and Post
 - Input validation with clear error messages
 - Consistent JSON error responses (404 for missing expenses)
 - Stores expense records in PostgreSQL using Spring Data JPA
+- Filter expenses by category (case-insensitive)
+- Pagination and sorting for the expense list
 
 ## Tech Stack
 - Java 21
@@ -31,6 +33,17 @@ A REST API for tracking personal expenses, built with Java, Spring Boot and Post
 | PUT | /api/expenses/{id} | 	Updates an existing expense | 200 |
 | DELETE | /api/expenses/{id} | Deletes an expense | 204 |
 
+## Query Parameters
+`GET /api/expenses` accepts these optional parameters:
+
+| Parameter | Example | What it does |
+|---|---|---|
+| category | `?category=food` | Returns only that category (ignores capital letters) |
+| page | `?page=0` | Which page to return, starting from 0 |
+| size | `?size=5` | How many expenses per page |
+| sort | `?sort=expenseDate,desc` | Sorts by a field, `asc` or `desc` |
+
+Example: `GET /api/expenses?category=Food&page=0&size=5&sort=expenseDate,desc`
 ## Example Request
 `POST /api/expenses`
 
