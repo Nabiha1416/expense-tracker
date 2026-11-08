@@ -9,6 +9,7 @@ A REST API for tracking personal expenses, built with Java, Spring Boot and Post
 - Stores expense records in PostgreSQL using Spring Data JPA
 - Filter expenses by category (case-insensitive)
 - Pagination and sorting for the expense list
+- Monthly spending summary grouped by category (SQL aggregation)
 
 ## Tech Stack
 - Java 21
@@ -32,6 +33,7 @@ A REST API for tracking personal expenses, built with Java, Spring Boot and Post
 | GET | /api/expenses/{id} | 	Retrieves an expense by ID | 200 |
 | PUT | /api/expenses/{id} | 	Updates an existing expense | 200 |
 | DELETE | /api/expenses/{id} | Deletes an expense | 204 |
+| GET | /api/expenses/summary?year=2026&month=11 | Total spent per category for a month | 200 |
 
 ## Query Parameters
 `GET /api/expenses` accepts these optional parameters:
@@ -55,6 +57,16 @@ Example: `GET /api/expenses?category=Food&page=0&size=5&sort=expenseDate,desc`
   "expenseDate": "2026-11-06"
 }
 ```
+## Example Response (Monthly Summary)
+`GET /api/expenses/summary?year=2026&month=11`
+
+```json
+[
+  { "category": "Food", "total": 420.00 },
+  { "category": "Travel", "total": 80.00 }
+]
+```
+
 ## What I Learned
 - Classes in `src/test` aren't part of the running app. I put my exception handler there by mistake, so validation errors kept using Spring's default response until I moved it to `src/main`.
 - A `@RestControllerAdvice` class handles errors for every endpoint in one place, so the controller methods don't repeat error checks and every error has the same JSON shape.
