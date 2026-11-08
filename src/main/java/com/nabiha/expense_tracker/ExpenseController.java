@@ -59,4 +59,8 @@ public class ExpenseController {
 
         return repository.save(existing);
     }
+    @GetMapping("/summary")
+    public List<CategoryTotal> getMonthlySummary(@RequestParam int year, @RequestParam int month) {
+        return repository.getMonthlySummary(year, month);
+    }
 }
