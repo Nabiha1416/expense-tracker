@@ -1,4 +1,5 @@
 package com.nabiha.expense_tracker;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
@@ -23,6 +24,10 @@ public class Expense {
 
     @NotNull
     private LocalDate expenseDate;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private AppUser owner;
 
     public Long getId() { return id; }
 
@@ -37,5 +42,7 @@ public class Expense {
 
     public LocalDate getExpenseDate() { return expenseDate; }
     public void setExpenseDate(LocalDate expenseDate) { this.expenseDate = expenseDate; }
+    public AppUser getOwner() { return owner; }
+    public void setOwner(AppUser owner) { this.owner = owner; }
 }
 
