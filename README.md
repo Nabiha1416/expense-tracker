@@ -8,7 +8,7 @@ API: https://expense-tracker-eftk.onrender.com
 Note: this runs on a free server that sleeps when idle, so the first request can take up to a minute to wake up. After that it responds quickly.
 
 ## Tech Stack
-Java 21, Spring Boot, Spring Security (JWT), PostgreSQL (Neon), Docker, Render, JUnit 5, Mockito
+Java 21, Spring Boot, Spring Security (JWT), Spring Data JPA, PostgreSQL (Neon), Maven, Docker, Render, JUnit 5, Mockito
 
 ## Features
 - Add, view, update and delete expenses
@@ -18,13 +18,6 @@ Java 21, Spring Boot, Spring Security (JWT), PostgreSQL (Neon), Docker, Render, 
 - Filter expenses by category (case-insensitive)
 - Pagination and sorting for the expense list
 - Monthly spending summary grouped by category (SQL aggregation)
-
-## Tech Stack
-- Java 21
-- Spring Boot 4
-- Spring Data JPA
-- PostgreSQL
-- Maven
 
 ## Setup
 1. Install Java 21 and PostgreSQL.
