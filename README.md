@@ -2,6 +2,14 @@
 
 A REST API for tracking personal expenses, built with Java, Spring Boot and PostgreSQL.
 
+## Live Demo
+API: https://expense-tracker-eftk.onrender.com
+
+Note: this runs on a free server that sleeps when idle, so the first request can take up to a minute to wake up. After that it responds quickly.
+
+## Tech Stack
+Java 21, Spring Boot, Spring Security (JWT), PostgreSQL (Neon), Docker, Render, JUnit 5, Mockito
+
 ## Features
 - Add, view, update and delete expenses
 - Input validation with clear error messages
