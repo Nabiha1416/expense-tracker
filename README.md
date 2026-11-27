@@ -7,6 +7,14 @@ API: https://expense-tracker-eftk.onrender.com
 
 Note: this runs on a free server that sleeps when idle, so the first request can take up to a minute to wake up. After that it responds quickly.
 
+Swagger UI (try it live): https://expense-tracker-eftk.onrender.com/swagger-ui.html
+
+How to try it:
+1. POST /api/auth/signup to create an account
+2. POST /api/auth/login and copy the token
+3. Click Authorize, paste the token
+4. Try the expense endpoints
+
 ## Tech Stack
 Java 21, Spring Boot, Spring Security (JWT), Spring Data JPA, PostgreSQL (Neon), Maven, Docker, Render, JUnit 5, Mockito
 
